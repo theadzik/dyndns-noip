@@ -21,7 +21,7 @@ jobs:
           if [ ${event} == "schedule" ]; then
             echo "tag=$(git tag | tail -n 1)" >> $GITHUB_OUTPUT
           else
-            echo "tag=$(echo ${GITHUB_REF})" >> $GITHUB_OUTPUT
+            echo "tag=$(echo ${GITHUB_REF} | cut -d'/' -f3)" >> $GITHUB_OUTPUT
           fi
         env:
           event: ${{ github.event_name }}
